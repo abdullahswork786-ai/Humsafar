@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-navy: #101C2A;
+  --primary-red: #E31B23;
+  --accent-green: #008A4B;
+  --bg-light: #F5F7F9;
+  --text-charcoal: #1F2933;
+  --border-color: #D9DEE3;
+}
+
+html {
+  font-family: var(--font-manrope), 'Manrope', sans-serif;
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+body {
+  color: #1F2933;
+  background-color: #FFFFFF;
+  font-family: var(--font-manrope), 'Manrope', sans-serif;
+  overflow-x: clip;
+  max-width: 100vw;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F7F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Background watermark effect */
+.watermark-text {
+  user-select: none;
+  pointer-events: none;
+  color: rgba(16, 28, 42, 0.03);
+}
+
+.dark-watermark-text {
+  user-select: none;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.03);
+}
+
+/* Red ribbon badge */
+.date-ribbon {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+}
+
+/* Lenis smooth scrolling styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Ultra-lightweight GPU Reveal Animations */
+.reveal-ready {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-ready.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
