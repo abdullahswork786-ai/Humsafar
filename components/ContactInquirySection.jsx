@@ -32,7 +32,7 @@ export default function ContactInquirySection() {
 
   return (
     <section className="relative py-20 sm:py-28 bg-white overflow-hidden">
-      <div className="w-[95%] sm:w-[90%] lg:w-[85%] mx-auto">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Card Container with Soft Gray (#ECEFF2) Background */}
         <div className="bg-[#ECEFF2] rounded-[28px] sm:rounded-[44px] lg:rounded-[48px] shadow-[0_12px_45px_rgba(0,0,0,0.03)] border border-gray-200/80 p-4 xs:p-6 sm:p-10 lg:p-16">

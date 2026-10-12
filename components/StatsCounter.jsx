@@ -18,9 +18,9 @@ export default function StatsCounter() {
   return (
     <section className="py-14 bg-white border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center text-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 items-center text-center">
           {stats.map((item) => (
-            <div key={item.id} className="flex flex-col items-center group">
+            <div key={item.id} className="flex flex-col items-center group last:col-span-2 sm:last:col-span-1 md:last:col-span-1">
               <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-3 group-hover:bg-brand-red group-hover:text-white transition-colors duration-200">
                 {getStatIcon(item.icon)}
               </div>

@@ -50,8 +50,8 @@ export default function Hero() {
 
   return (
     <section className="relative bg-[#101C2A] overflow-hidden">
-      {/* 100vh Hero Banner fitting with TopBar and Navbar */}
-      <div className="relative min-h-[calc(100vh-108px)] lg:h-[calc(100vh-108px)] flex items-center justify-center overflow-hidden py-12">
+      {/* Responsive Hero Banner fitting with TopBar and Navbar */}
+      <div className="relative min-h-[calc(100vh-108px)] flex items-center justify-center overflow-hidden py-12 sm:py-16 md:py-20">
         {/* Background Image with Deep Navy & Subtle Red Ambient Blend */}
         <div className="absolute inset-0 z-0">
           <img

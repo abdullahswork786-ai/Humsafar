@@ -102,13 +102,13 @@ export default function Header() {
         }`}
       >
         {/* Header Content Bar */}
-        <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-8 2xl:px-12">
           <div className="flex items-center justify-between">
             {/* Official HUMSAFAR Logo */}
-            <Logo className="mr-3 sm:mr-8 xl:mr-12" />
+            <Logo className="mr-3 sm:mr-4 xl:mr-6 2xl:mr-10" />
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 text-[13px] font-bold text-white uppercase tracking-wider flex-1 justify-center">
+            {/* Desktop Navigation Links (Cleanly active on 1280px+ laptops and desktop) */}
+            <nav className="hidden xl:flex items-center space-x-3.5 2xl:space-x-6 text-[12px] 2xl:text-[13px] font-bold text-white uppercase tracking-wider flex-1 justify-center">
               {navigation.mainNav.map((item) => {
                 const hasDropdown = Boolean(item.dropdown);
                 const isActive = pathname === item.href;
@@ -170,18 +170,18 @@ export default function Header() {
             </nav>
 
             {/* Right Action: Clean Red ENQUIRY Button on Desktop */}
-            <div className="hidden lg:flex items-center flex-shrink-0 ml-8 xl:ml-12">
+            <div className="hidden xl:flex items-center flex-shrink-0 ml-4 xl:ml-6 2xl:ml-10">
               <Link
                 href="/free-assessment"
-                className="inline-flex items-center space-x-1.5 bg-[#E31B23] hover:bg-[#C2131A] text-white text-xs font-black uppercase tracking-wider px-6 py-2.5 rounded-lg shadow-red-glow hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
+                className="inline-flex items-center space-x-1.5 bg-[#E31B23] hover:bg-[#C2131A] text-white text-[11px] 2xl:text-xs font-black uppercase tracking-wider px-5 py-2.5 rounded-lg shadow-red-glow hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 <span>ENQUIRY</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* Mobile Hamburger / X Button & ENQUIRY CTA */}
-            <div className="lg:hidden flex items-center space-x-2 sm:space-x-3">
+            {/* Mobile & Tablet (< 1280px) Hamburger / X Button & ENQUIRY CTA */}
+            <div className="xl:hidden flex items-center space-x-2 sm:space-x-3">
               <Link
                 href="/free-assessment"
                 className="bg-[#E31B23] hover:bg-[#C2131A] text-white text-[11px] sm:text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-sm transition-transform active:scale-95 whitespace-nowrap"
@@ -221,7 +221,7 @@ export default function Header() {
       {/* Modern Full-Screen Mobile Drawer with Smooth Transitions */}
       <div
         data-lenis-prevent="true"
-        className={`lg:hidden fixed inset-x-0 bottom-0 z-40 bg-[#0B131C] flex flex-col justify-between overflow-y-auto overscroll-contain transition-all duration-300 ease-in-out ${
+        className={`xl:hidden fixed inset-x-0 bottom-0 z-40 bg-[#0B131C] flex flex-col justify-between overflow-y-auto overscroll-contain transition-all duration-300 ease-in-out ${
           mobileMenuOpen
             ? "opacity-100 translate-y-0 visible pointer-events-auto"
             : "opacity-0 -translate-y-4 invisible pointer-events-none"

@@ -16,6 +16,8 @@ export default function CountryServices() {
           setVisibleItems(1);
         } else if (window.innerWidth < 1024) {
           setVisibleItems(2);
+        } else if (window.innerWidth < 1280) {
+          setVisibleItems(3);
         } else {
           setVisibleItems(4);
         }
