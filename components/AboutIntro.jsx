@@ -5,14 +5,35 @@ import { ArrowRight, ThumbsUp, Headset, ShieldCheck, CheckCircle2 } from "lucide
 
 export default function AboutIntro() {
   return (
-    <section className="relative py-24 bg-white overflow-hidden">
+    <section className="relative py-12 sm:py-16 lg:py-24 bg-white overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Next-Level 3-Image Collage + Experience Card */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative w-full max-w-[500px] mx-auto min-h-[380px] xs:min-h-[440px] sm:min-h-[520px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+          {/* Left Column: 1 Image on Mobile, 3-Image Collage on Desktop (Order 2 on mobile, Order 1 on Desktop) */}
+          <div className="lg:col-span-6 relative order-2 lg:order-1">
+            {/* Mobile View: Single Clean Image (Visible on mobile only < sm) */}
+            <div className="sm:hidden relative w-full max-w-[320px] mx-auto pt-2">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white aspect-[4/3]">
+                <img
+                  src="/images/about/consultant-male.jpg"
+                  alt="HUMSAFAR Consultant in office"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              {/* Floating Experience Badge */}
+              <div className="absolute -bottom-3 right-4 z-20 bg-white px-4 py-2 rounded-2xl shadow-xl border border-gray-100 text-center">
+                <span className="block text-2xl font-black text-[#E31B23] leading-none font-heading">
+                  10+
+                </span>
+                <span className="block text-[8px] font-black text-[#101C2A] uppercase tracking-widest mt-0.5 leading-tight font-heading">
+                  YEARS OF<br />EXPERIENCE
+                </span>
+              </div>
+            </div>
+
+            {/* Tablet & Desktop View: Full 3-Image Collage (Hidden on mobile < sm) */}
+            <div className="hidden sm:block relative w-full max-w-[440px] lg:max-w-[500px] mx-auto min-h-[400px] lg:min-h-[500px]">
               {/* Image 1 (Top Center/Left): Professional Male Visa Advisor */}
-              <div className="absolute top-0 left-4 xs:left-8 sm:left-14 w-44 xs:w-52 sm:w-64 h-44 xs:h-52 sm:h-64 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-4 border-white z-10 group">
+              <div className="absolute top-0 left-8 lg:left-12 w-52 lg:w-60 h-52 lg:h-60 rounded-3xl overflow-hidden shadow-xl border-4 border-white z-10 group">
                 <img
                   src="/images/about/consultant-male.jpg"
                   alt="HUMSAFAR Consultant in office"
@@ -21,7 +42,7 @@ export default function AboutIntro() {
               </div>
 
               {/* Image 2 (Bottom Left): Young Male Student / Traveler */}
-              <div className="absolute bottom-4 xs:bottom-6 left-0 w-36 xs:w-44 sm:w-52 h-36 xs:h-44 sm:h-52 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-20 group">
+              <div className="absolute bottom-4 left-0 w-36 lg:w-44 h-36 lg:h-44 rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-20 group">
                 <img
                   src="/images/about/student-male.jpg"
                   alt="Student visa applicant"
@@ -30,7 +51,7 @@ export default function AboutIntro() {
               </div>
 
               {/* Image 3 (Bottom Right): Happy Male Traveler / Client */}
-              <div className="absolute bottom-0 right-0 xs:right-2 sm:right-6 w-38 xs:w-48 sm:w-56 h-38 xs:h-48 sm:h-56 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-4 border-white z-10 group">
+              <div className="absolute bottom-0 right-2 lg:right-4 w-40 lg:w-48 h-40 lg:h-48 rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl border-4 border-white z-10 group">
                 <img
                   src="/images/about/traveler-male.jpg"
                   alt="Successful visa applicant"
@@ -38,20 +59,20 @@ export default function AboutIntro() {
                 />
               </div>
 
-              {/* Floating Experience Badge (Overlapping Center Intersection matching reference) */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 z-30 bg-white px-4 py-2.5 xs:px-5 xs:py-3.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl shadow-2xl border border-gray-100 text-center min-w-[110px] xs:min-w-[130px] sm:min-w-[140px]">
-                <span className="block text-3xl xs:text-4xl sm:text-5xl font-black text-[#E31B23] leading-none font-heading">
+              {/* Floating Experience Badge */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 z-30 bg-white px-5 py-3.5 rounded-2xl shadow-2xl border border-gray-100 text-center min-w-[130px]">
+                <span className="block text-4xl lg:text-5xl font-black text-[#E31B23] leading-none font-heading">
                   10+
                 </span>
-                <span className="block text-[8.5px] xs:text-[9.5px] sm:text-[10px] font-black text-[#101C2A] uppercase tracking-widest mt-1 sm:mt-1.5 leading-tight font-heading">
+                <span className="block text-[9.5px] font-black text-[#101C2A] uppercase tracking-widest mt-1.5 leading-tight font-heading">
                   YEARS OF<br />EXPERIENCE
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Content & Features matching reference image */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Right Column: Content & Features (Order 1 on mobile, Order 2 on Desktop) */}
+          <div className="lg:col-span-6 space-y-6 order-1 lg:order-2">
             <div>
               <div className="inline-flex items-center space-x-2 text-[#E31B23] text-xs md:text-sm font-bold uppercase tracking-widest mb-2 font-heading">
                 <span className="w-6 h-0.5 bg-[#E31B23] rounded-full" />
@@ -71,7 +92,7 @@ export default function AboutIntro() {
             <div className="space-y-5 pt-2">
               {/* Feature 1: Trusted by Clients */}
               <div className="flex items-start space-x-4 group">
-                <div className="w-13 h-13 p-3 rounded-2xl bg-red-50 text-[#E31B23] flex-shrink-0 group-hover:bg-[#E31B23] group-hover:text-white transition-all duration-300 shadow-xs border border-red-100">
+                <div className="w-12 h-12 p-3 rounded-2xl bg-red-50 text-[#E31B23] flex-shrink-0 group-hover:bg-[#E31B23] group-hover:text-white transition-all duration-300 shadow-xs border border-red-100 flex items-center justify-center">
                   <ThumbsUp className="w-6 h-6" />
                 </div>
                 <div>
@@ -86,7 +107,7 @@ export default function AboutIntro() {
 
               {/* Feature 2: Dedicated Support */}
               <div className="flex items-start space-x-4 group">
-                <div className="w-13 h-13 p-3 rounded-2xl bg-blue-50 text-[#101C2A] flex-shrink-0 group-hover:bg-[#101C2A] group-hover:text-white transition-all duration-300 shadow-xs border border-blue-100">
+                <div className="w-12 h-12 p-3 rounded-2xl bg-blue-50 text-[#101C2A] flex-shrink-0 group-hover:bg-[#101C2A] group-hover:text-white transition-all duration-300 shadow-xs border border-blue-100 flex items-center justify-center">
                   <Headset className="w-6 h-6" />
                 </div>
                 <div>

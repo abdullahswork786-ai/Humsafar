@@ -63,7 +63,7 @@ export default function ProcessStrip() {
                 <div>
                   {/* Top Row: Icon Squircle + Step Number */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white/15 border border-white/30 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#E31B23] group-hover:shadow-lg transition-all duration-300">
+                    <div className="w-14 h-14 rounded-2xl bg-white/15 border border-white/30 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#E31B23] group-hover:shadow-lg transition-all duration-300 flex-shrink-0">
                       <Icon className="w-6 h-6 transition-colors duration-300" />
                     </div>
                     <span className="text-2xl sm:text-3xl font-black text-white/40 group-hover:text-white transition-colors font-mono">

@@ -37,10 +37,10 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="relative py-24 bg-white overflow-hidden">
+    <section className="relative pt-8 sm:pt-14 lg:pt-20 pb-16 sm:pb-20 lg:pb-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Squircle Next/Prev Buttons matching reference */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-gray-200/70 mb-14">
+        <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-gray-200/70 mb-8 sm:mb-14">
           <div>
             <div className="inline-flex items-center space-x-2 text-[#E31B23] text-xs font-bold uppercase tracking-widest mb-2 font-heading">
               <span className="w-6 h-0.5 bg-[#E31B23] rounded-full" />

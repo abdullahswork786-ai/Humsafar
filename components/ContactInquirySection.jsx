@@ -35,7 +35,7 @@ export default function ContactInquirySection() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Card Container with Soft Gray (#ECEFF2) Background */}
-        <div className="bg-[#ECEFF2] rounded-[28px] sm:rounded-[44px] lg:rounded-[48px] shadow-[0_12px_45px_rgba(0,0,0,0.03)] border border-gray-200/80 p-4 xs:p-6 sm:p-10 lg:p-16">
+        <div className="bg-[#ECEFF2] rounded-[28px] sm:rounded-[44px] lg:rounded-[48px] shadow-[0_12px_45px_rgba(0,0,0,0.03)] border border-gray-200/80 px-2.5 py-6 sm:p-10 lg:p-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20 xl:gap-24 items-center">
             
             {/* Left Column: Heading, Subtitle & Direct Contacts */}
@@ -103,7 +103,7 @@ export default function ContactInquirySection() {
 
             {/* Right Column: Branded Solid Card Form (Wider lg:col-span-7) */}
             <div className="lg:col-span-7">
-              <div className="bg-[#101C2A] text-white p-5 xs:p-7 sm:p-9 lg:p-11 rounded-[24px] sm:rounded-[36px] shadow-xl border border-[#1A2D42] relative overflow-hidden">
+              <div className="bg-[#101C2A] text-white px-3.5 py-6 sm:px-8 sm:py-9 lg:p-11 rounded-[24px] sm:rounded-[36px] shadow-xl border border-[#1A2D42] relative overflow-hidden">
                 
                 {submitted ? (
                   <div className="py-12 text-center space-y-4">
@@ -131,7 +131,7 @@ export default function ContactInquirySection() {
                         placeholder="Enter your full name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white placeholder-gray-400 text-sm focus:outline-none transition-all"
+                        className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white placeholder-gray-400 text-sm focus:outline-none transition-all"
                       />
                     </div>
 
@@ -147,7 +147,7 @@ export default function ContactInquirySection() {
                           placeholder="Phone / WhatsApp"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white placeholder-gray-400 text-sm focus:outline-none transition-all"
+                          className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white placeholder-gray-400 text-sm focus:outline-none transition-all"
                         />
                       </div>
 
@@ -161,7 +161,7 @@ export default function ContactInquirySection() {
                           placeholder="yourname@email.com"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white placeholder-gray-400 text-sm focus:outline-none transition-all"
+                          className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white placeholder-gray-400 text-sm focus:outline-none transition-all"
                         />
                       </div>
                     </div>
@@ -177,7 +177,7 @@ export default function ContactInquirySection() {
                             value={formData.service}
                             onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                             required
-                            className="w-full px-5 py-3.5 rounded-2xl bg-[#1A2D42] border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white text-sm focus:outline-none transition-all cursor-pointer appearance-none"
+                            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-[#1A2D42] border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white text-sm focus:outline-none transition-all cursor-pointer appearance-none"
                           >
                             <option value="" disabled>Select a service</option>
                             <option value="Study Abroad & Student Visa">Study Abroad & Student Visa</option>
@@ -202,7 +202,7 @@ export default function ContactInquirySection() {
                           <select
                             value={formData.destination}
                             onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-                            className="w-full px-5 py-3.5 rounded-2xl bg-[#1A2D42] border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white text-sm focus:outline-none transition-all cursor-pointer appearance-none"
+                            className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-[#1A2D42] border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white text-sm focus:outline-none transition-all cursor-pointer appearance-none"
                           >
                             <option value="">Select country (Optional)</option>
                             <option value="United Kingdom">United Kingdom</option>
@@ -232,7 +232,7 @@ export default function ContactInquirySection() {
                         placeholder="Briefly describe your requirements or questions..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white placeholder-gray-400 text-sm focus:outline-none transition-all resize-none"
+                        className="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-[#E31B23] focus:ring-1 focus:ring-[#E31B23]/40 text-white placeholder-gray-400 text-sm focus:outline-none transition-all resize-none"
                       />
                     </div>
 

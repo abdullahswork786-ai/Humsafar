@@ -34,11 +34,10 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Update header height/bottom position on resize or scroll
+  // Update header height position
   const updateHeaderPosition = () => {
     if (headerRef.current) {
-      const rect = headerRef.current.getBoundingClientRect();
-      setHeaderBottom(Math.round(rect.bottom));
+      setHeaderBottom(headerRef.current.offsetHeight || 64);
     }
   };
 
@@ -95,10 +94,12 @@ export default function Header() {
     <>
       <header
         ref={headerRef}
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-[#101C2A]/95 backdrop-blur-md shadow-2xl py-2.5 sm:py-3 lg:py-3.5 border-b border-[#1A2D42]"
-            : "bg-[#101C2A] shadow-lg py-3 sm:py-3.5 lg:py-4 border-b border-[#1A2D42]/60"
+        className={`z-50 transition-all duration-300 ${
+          mobileMenuOpen
+            ? "fixed top-0 inset-x-0 bg-[#101C2A] shadow-2xl py-2.5 sm:py-3 border-b border-[#1A2D42]"
+            : isScrolled
+            ? "sticky top-0 bg-[#101C2A]/95 backdrop-blur-md shadow-2xl py-2.5 sm:py-3 lg:py-3.5 border-b border-[#1A2D42]"
+            : "sticky top-0 bg-[#101C2A] shadow-lg py-3 sm:py-3.5 lg:py-4 border-b border-[#1A2D42]/60"
         }`}
       >
         {/* Header Content Bar */}
@@ -180,14 +181,8 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Mobile & Tablet (< 1280px) Hamburger / X Button & ENQUIRY CTA */}
-            <div className="xl:hidden flex items-center space-x-2 sm:space-x-3">
-              <Link
-                href="/free-assessment"
-                className="bg-[#E31B23] hover:bg-[#C2131A] text-white text-[11px] sm:text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-sm transition-transform active:scale-95 whitespace-nowrap"
-              >
-                ENQUIRY
-              </Link>
+            {/* Mobile & Tablet (< 1280px) Hamburger / X Button */}
+            <div className="xl:hidden flex items-center">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -244,25 +239,20 @@ export default function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-200 ${
+                  className={`flex items-center px-3.5 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-200 ${
                     isActive
                       ? "bg-[#E31B23]/15 text-[#E31B23] border-l-2 border-[#E31B23]"
                       : "text-white/90 hover:text-white hover:bg-white/5 active:bg-white/10"
                   }`}
                 >
                   <span>{item.label}</span>
-                  <ChevronRight
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      isActive ? "text-[#E31B23]" : "text-gray-500"
-                    }`}
-                  />
                 </Link>
               );
             }
 
             return (
               <div key={item.label} className="border-b border-[#1A2D42]/40 pb-1">
-                {/* Accordion Toggle Header */}
+                {/* Accordion Toggle Header - Dropdown icon shown only for items with submenu */}
                 <button
                   type="button"
                   onClick={() => toggleMobileDropdown(item.label)}
@@ -287,7 +277,7 @@ export default function Header() {
                   </div>
                 </button>
 
-                {/* Smooth Animated Accordion Content */}
+                {/* Smooth Animated Accordion Content - Clean unboxed submenu */}
                 <div
                   className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
                     isExpanded
@@ -296,15 +286,14 @@ export default function Header() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="my-1.5 ml-2 pl-3 border-l-2 border-[#E31B23]/70 space-y-1 bg-[#101C2A]/60 rounded-r-xl p-2 border border-white/5">
+                    <div className="my-1 ml-2 space-y-1">
                       {/* Main section overview link */}
                       <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-bold text-[#E31B23] hover:bg-white/5 transition-colors"
+                        className="flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#E31B23] hover:bg-white/5 transition-colors"
                       >
                         <span>Explore All {item.label}</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
                       </Link>
 
                       {/* Dropdown Items */}
@@ -332,7 +321,6 @@ export default function Header() {
                               </span>
                             )}
                             <span className="flex-1">{subItem.label}</span>
-                            <ChevronRight className="w-3 h-3 text-gray-500 flex-shrink-0" />
                           </Link>
                         );
                       })}
