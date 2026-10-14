@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, Send, ShieldCheck, ArrowRight, Plane } from "lucide-react";
+import { CheckCircle2, Send, ShieldCheck, ArrowRight, Plane, Loader2 } from "lucide-react";
 
 export default function FreeAssessmentPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -18,9 +20,31 @@ export default function FreeAssessmentPage() {
     privacyConsent: true
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/assessment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit assessment. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setErrorMessage(err.message || "Failed to submit assessment. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -240,12 +264,28 @@ export default function FreeAssessmentPage() {
                   </label>
                 </div>
 
+                {errorMessage && (
+                  <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl font-medium">
+                    {errorMessage}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-brand-red hover:bg-brand-red-hover text-white font-black py-4 px-6 rounded-xl shadow-red-glow hover:shadow-2xl transition-all duration-200 flex items-center justify-center space-x-2 uppercase tracking-wider text-sm"
+                  disabled={loading}
+                  className="w-full bg-brand-red hover:bg-brand-red-hover disabled:bg-gray-400 text-white font-black py-4 px-6 rounded-xl shadow-red-glow hover:shadow-2xl transition-all duration-200 flex items-center justify-center space-x-2 uppercase tracking-wider text-sm cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <span>REQUEST MY FREE ASSESSMENT</span>
-                  <ArrowRight className="w-4 h-4" />
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Submitting Assessment...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>REQUEST MY FREE ASSESSMENT</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}

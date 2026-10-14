@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2, Loader2 } from "lucide-react";
 
 export default function ContactInquirySection() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -14,11 +16,29 @@ export default function ContactInquirySection() {
     message: ""
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+    setLoading(true);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: "Homepage Inquiry",
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit inquiry. Please try again.");
+      }
+
+      setSubmitted(true);
       setFormData({
         name: "",
         phone: "",
@@ -27,7 +47,14 @@ export default function ContactInquirySection() {
         destination: "",
         message: ""
       });
-    }, 5000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 6000);
+    } catch (err) {
+      setErrorMessage(err.message || "Failed to submit inquiry. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -236,16 +263,29 @@ export default function ContactInquirySection() {
                       />
                     </div>
 
+                    {errorMessage && (
+                      <div className="p-3 bg-red-500/20 border border-red-500/40 text-red-200 text-xs rounded-xl font-medium">
+                        {errorMessage}
+                      </div>
+                    )}
+
                     {/* Submit Pill Button in Brand Red */}
                     <div className="pt-2">
                       <button
                         type="submit"
-                        className="inline-flex items-center gap-3 bg-[#E31B23] hover:bg-[#C8141B] text-white font-extrabold px-7 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer group"
+                        disabled={loading}
+                        className="inline-flex items-center gap-3 bg-[#E31B23] hover:bg-[#C8141B] disabled:bg-gray-500 text-white font-extrabold px-7 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer disabled:cursor-not-allowed group"
                       >
                         <div className="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#E31B23] transition-colors">
-                          <Send className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
+                          {loading ? (
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          ) : (
+                            <Send className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
+                          )}
                         </div>
-                        <span className="text-xs uppercase tracking-wider font-heading">Submit</span>
+                        <span className="text-xs uppercase tracking-wider font-heading">
+                          {loading ? "Submitting..." : "Submit"}
+                        </span>
                       </button>
                     </div>
                   </form>
