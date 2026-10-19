@@ -121,7 +121,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Animated Hero Text & Buttons with Blur Fade Transition */}
+          {/* Animated Hero Text with Blur Fade Transition */}
           <div
             className={`w-full flex flex-col items-center will-change-[opacity,filter,transform] transition-all duration-500 ease-out ${
               isTransitioning
@@ -138,25 +138,33 @@ export default function Hero() {
             <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 drop-shadow">
               {active.subtitle}
             </p>
+          </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-              <Link
-                href={active.href}
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-transparent hover:bg-white hover:text-[#101C2A] text-white border-2 border-white font-extrabold px-8 py-3.5 rounded-lg transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm backdrop-blur-xs shadow-xl transform hover:-translate-y-0.5"
-              >
-                <span>{active.buttonText}</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+          {/* Action Buttons (Subtle & gentle transition, no heavy blur) */}
+          <div
+            className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto transition-all duration-300 ease-out ${
+              isTransitioning
+                ? "opacity-85 translate-y-[2px]"
+                : "opacity-100 translate-y-0"
+            }`}
+          >
+            <Link
+              href={active.href}
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-transparent hover:bg-white hover:text-[#101C2A] text-white border-2 border-white font-extrabold px-8 py-3.5 rounded-lg transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm backdrop-blur-xs shadow-xl transform hover:-translate-y-0.5"
+            >
+              <span className={`transition-opacity duration-200 ${isTransitioning ? "opacity-60" : "opacity-100"}`}>
+                {active.buttonText}
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
 
-              <Link
-                href="/free-assessment"
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-[#E31B23] hover:bg-[#C2131A] text-white font-extrabold px-8 py-3.5 rounded-lg transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm shadow-red-glow hover:shadow-2xl transform hover:-translate-y-0.5"
-              >
-                <span>FREE ASSESSMENT</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            <Link
+              href="/free-assessment"
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-[#E31B23] hover:bg-[#C2131A] text-white font-extrabold px-8 py-3.5 rounded-lg transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm shadow-red-glow hover:shadow-2xl transform hover:-translate-y-0.5"
+            >
+              <span>FREE ASSESSMENT</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
           {/* Slide Indicator Dots */}
