@@ -155,11 +155,6 @@ export default function Header() {
                                 {getServiceIcon(subItem.icon)}
                               </span>
                             )}
-                            {subItem.code && (
-                              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 group-hover/sub:bg-[#E31B23] group-hover/sub:text-white transition-colors">
-                                {subItem.code}
-                              </span>
-                            )}
                             <span className="flex-1">{subItem.label}</span>
                           </Link>
                         ))}
@@ -313,11 +308,6 @@ export default function Header() {
                             {subItem.icon && (
                               <span className="p-1 rounded-md bg-[#E31B23]/10 text-[#E31B23] flex-shrink-0">
                                 {getServiceIcon(subItem.icon)}
-                              </span>
-                            )}
-                            {subItem.code && (
-                              <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-black/40 text-gray-300 border border-white/10 flex-shrink-0">
-                                {subItem.code}
                               </span>
                             )}
                             <span className="flex-1">{subItem.label}</span>
