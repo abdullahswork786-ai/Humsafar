@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function HotlineBar() {
   return (
-    <section className="bg-[#E31B23] text-white py-10 relative overflow-hidden">
+    <section className="bg-[#E31B23] text-white py-7 relative overflow-hidden">
       {/* Background Graphic */}
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
 
@@ -31,7 +31,7 @@ export default function HotlineBar() {
             </Link>
 
             <a
-              href="https://wa.me/"
+              href="https://wa.me/923177757357"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 bg-[#101C2A] hover:bg-[#0B131C] text-white border border-white/20 font-bold px-6 py-3.5 rounded-xl transition-all duration-200 uppercase tracking-wider text-xs shadow-md"

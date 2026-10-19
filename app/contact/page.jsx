@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, Loader2 } from "lucide-react";
+import { navigation } from "@/data/navigation";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -95,13 +96,13 @@ export default function ContactPage() {
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                   {/* Phone */}
                   <a
-                    href="tel:+923001234567"
+                    href={`tel:${navigation.contactInfo.officialPhone}`}
                     className="inline-flex items-center gap-3 text-xs sm:text-sm font-bold text-[#101C2A] hover:text-[#E31B23] transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-full bg-[#E31B23] group-hover:bg-[#C8141B] text-white flex items-center justify-center shrink-0 shadow-sm transition-colors">
                       <Phone className="w-3.5 h-3.5" />
                     </div>
-                    <span>+92 (300) 123-4567</span>
+                    <span>{navigation.contactInfo.officialPhone}</span>
                   </a>
 
                   {/* Location */}
@@ -109,20 +110,32 @@ export default function ContactPage() {
                     <div className="w-8 h-8 rounded-full bg-[#E31B23] text-white flex items-center justify-center shrink-0 shadow-sm">
                       <MapPin className="w-3.5 h-3.5" />
                     </div>
-                    <span>Islamabad & Lahore, PK</span>
+                    <span>{navigation.contactInfo.address}</span>
                   </div>
                 </div>
 
-                {/* Email */}
-                <div>
+                {/* Email & WhatsApp */}
+                <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                   <a
-                    href="mailto:info@humsafar.com"
+                    href={`mailto:${navigation.contactInfo.email}`}
                     className="inline-flex items-center gap-3 text-xs sm:text-sm font-bold text-[#101C2A] hover:text-[#E31B23] transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-full bg-[#E31B23] group-hover:bg-[#C8141B] text-white flex items-center justify-center shrink-0 shadow-sm transition-colors">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
-                    <span>info@humsafar.com</span>
+                    <span>{navigation.contactInfo.email}</span>
+                  </a>
+
+                  <a
+                    href={navigation.contactInfo.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 text-xs sm:text-sm font-bold text-[#101C2A] hover:text-[#25D366] transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-sm transition-colors">
+                      <Phone className="w-3.5 h-3.5" />
+                    </div>
+                    <span>{navigation.contactInfo.whatsapp} (WhatsApp)</span>
                   </a>
                 </div>
               </div>
@@ -130,7 +143,7 @@ export default function ContactPage() {
               {/* Working Hours Footnote */}
               <div className="pt-2 flex items-center space-x-2 text-xs text-gray-500 font-medium">
                 <Clock className="w-4 h-4 text-[#008A4B]" />
-                <span>Operating Hours: Monday – Saturday (9:00 AM – 6:00 PM PKT)</span>
+                <span>Operating Hours: {navigation.contactInfo.hours}</span>
               </div>
             </div>
 

@@ -11,14 +11,14 @@ export default function TopBar() {
           <Headphones className="w-3.5 h-3.5 text-white/95 flex-shrink-0" />
           <span className="hidden sm:inline text-white/90">Need Assistance:</span>
           <a
-            href="tel:+920000000000"
+            href={`tel:${navigation.contactInfo.phone}`}
             className="text-white hover:underline font-bold tracking-wide"
           >
             {navigation.contactInfo.phone}
           </a>
           <span className="hidden md:inline text-white/70">or</span>
           <a
-            href="mailto:info@humsafar.com"
+            href={`mailto:${navigation.contactInfo.email}`}
             className="hidden md:inline text-white hover:underline"
           >
             {navigation.contactInfo.email}

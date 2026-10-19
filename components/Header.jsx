@@ -12,7 +12,9 @@ import {
   Compass,
   Briefcase,
   Phone,
-  Mail
+  Mail,
+  Menu,
+  X
 } from "lucide-react";
 import { navigation } from "@/data/navigation";
 import Logo from "@/components/Logo";
@@ -185,23 +187,11 @@ export default function Header() {
                 aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={mobileMenuOpen}
               >
-                <div className="relative w-6 h-5 flex flex-col justify-between items-center">
-                  <span
-                    className={`block h-0.5 w-6 rounded-full transform transition-all duration-300 ease-in-out ${
-                      mobileMenuOpen ? "bg-[#E31B23] rotate-45 translate-y-2" : "bg-white"
-                    }`}
-                  />
-                  <span
-                    className={`block h-0.5 w-6 rounded-full transition-all duration-200 ease-in-out ${
-                      mobileMenuOpen ? "opacity-0 -translate-x-2" : "bg-white opacity-100"
-                    }`}
-                  />
-                  <span
-                    className={`block h-0.5 w-6 rounded-full transform transition-all duration-300 ease-in-out ${
-                      mobileMenuOpen ? "bg-[#E31B23] -rotate-45 -translate-y-2" : "bg-white"
-                    }`}
-                  />
-                </div>
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6 text-[#E31B23] transition-transform duration-200" />
+                ) : (
+                  <Menu className="w-6 h-6 text-white transition-transform duration-200" />
+                )}
               </button>
             </div>
           </div>
@@ -236,7 +226,7 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center px-3.5 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-200 ${
                     isActive
-                      ? "bg-[#E31B23]/15 text-[#E31B23] border-l-2 border-[#E31B23]"
+                      ? "bg-[#E31B23]/15 text-[#E31B23]"
                       : "text-white/90 hover:text-white hover:bg-white/5 active:bg-white/10"
                   }`}
                 >
@@ -336,7 +326,7 @@ export default function Header() {
 
           {/* WhatsApp Direct Consultation */}
           <a
-            href="https://wa.me/"
+            href={navigation.contactInfo.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center space-x-2.5 bg-[#101C2A] hover:bg-[#152335] text-white border border-[#25D366]/40 font-bold py-2.5 px-4 rounded-xl text-xs uppercase tracking-wider transition-all transform active:scale-[0.98]"
@@ -350,14 +340,14 @@ export default function Header() {
           {/* Contact Hotline */}
           <div className="pt-1.5 flex items-center justify-between text-[11px] text-gray-400">
             <a
-              href="tel:+920000000000"
+              href={`tel:${navigation.contactInfo.phone}`}
               className="hover:text-white flex items-center space-x-1.5 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-[#E31B23]" />
               <span>{navigation.contactInfo.phone}</span>
             </a>
             <a
-              href="mailto:info@humsafar.com"
+              href={`mailto:${navigation.contactInfo.email}`}
               className="hover:text-white flex items-center space-x-1.5 transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-[#E31B23]" />
